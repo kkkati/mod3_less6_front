@@ -6,11 +6,11 @@ import { saveRequstAsync } from "../../actions/save-request-async";
 import { dateTransform } from "../../utils/date-transform";
 
 export const FormContainer = ({ className }) => {
+  const dispatch = useDispatch();
+
   const [fioValue, setFioValue] = useState("");
   const [telephoneValue, setTelephoneValue] = useState("");
   const [descriptionsValue, setdescriptions] = useState("");
-
-  const dispatch = useDispatch();
 
   const onSave = () => {
     dispatch(
