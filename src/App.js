@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import { Authorization, Form, Table } from "./pages";
+import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
-function App() {
+const AppColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const App = () => {
+  const [dataFromServer, setDataFromServer] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppColumn>
+      <div>{dataFromServer}</div>
+      <Routes>
+        <Route path="/" element={<Form />} />
+        <Route path="/login" element={<Authorization />} />
+        <Route path="/table" element={<Table />} />
+        <Route path="/*" element={<div>Такой страницы не существует</div>} />
+      </Routes>
+    </AppColumn>
   );
-}
+};
 
 export default App;
